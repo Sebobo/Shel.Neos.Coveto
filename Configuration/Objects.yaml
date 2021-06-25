@@ -1,0 +1,16 @@
+Shel\Neos\Coveto\Service\CovetoService:
+  properties:
+    apiCache:
+      object:
+        factoryObjectName: Neos\Flow\Cache\CacheManager
+        factoryMethodName: getCache
+        arguments:
+          1:
+            value: ApiConnector_DataCache
+    fallbackApiCache:
+      object:
+        factoryObjectName: Neos\Flow\Cache\CacheManager
+        factoryMethodName: getCache
+        arguments:
+          1:
+            value: ApiConnector_PersistentCache

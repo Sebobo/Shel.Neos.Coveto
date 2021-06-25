@@ -1,0 +1,18 @@
+prototype(Shel.Neos.Coveto:Content.JobList) < prototype(Neos.Neos:ContentComponent) {
+    detailsPage = ${q(node).property('detailsPage')}
+
+    renderer = Shel.Neos.Coveto:Component.JobList {
+        detailsPage = ${props.detailsPage}
+    }
+
+    @cache {
+        mode = 'cached'
+        entryIdentifier {
+            node = ${node}
+        }
+        entryTags {
+            node = ${Neos.Caching.nodeTag(node)}
+        }
+        maximumLifetime = 3600
+    }
+}

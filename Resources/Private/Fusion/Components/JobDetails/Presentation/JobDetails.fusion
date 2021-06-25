@@ -1,0 +1,10 @@
+prototype(Shel.Neos.Coveto:Component.JobDetails.Presentation) < prototype(Neos.Fusion:Component) {
+    job = null
+
+    renderer = afx`
+        <section class="jobdetails">
+            {props.job.html}
+            {props.job.jsonld}
+        </section>
+    `
+}

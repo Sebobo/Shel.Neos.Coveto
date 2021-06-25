@@ -1,0 +1,40 @@
+Shel:
+  Neos:
+    Coveto:
+      xmlFeed:
+        apiUrl: 'https://your-customer-id.coveto.de/public/xml/'
+        timeout: 30
+        parameters: {}
+        useFallbackCache: true
+        actions:
+          fetchJobs: ''
+
+Neos:
+  Fusion:
+    defaultContext:
+      Shel.Neos.Coveto: 'Shel\Neos\Coveto\Eel\Helper\CovetoHelper'
+
+  Flow:
+    mvc:
+      routes:
+        Shel.Neos.Coveto:
+          position: 'before Neos.Neos'
+          variables:
+            # Set this to an empty string if you prefer URLs without the ".html" suffix
+            'defaultUriSuffix': '.html'
+  Neos:
+    fusion:
+      autoInclude:
+        Shel.Neos.Coveto: true
+
+    nodeTypes:
+      groups:
+        jobs:
+          position: 'end'
+          label: 'Jobs'
+
+    userInterface:
+      translation:
+        autoInclude:
+          Shel.Neos.Coveto:
+            - 'NodeTypes/*'

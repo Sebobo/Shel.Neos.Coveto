@@ -1,0 +1,9 @@
+prototype(Shel.Neos.Coveto:Component.JobList) < prototype(Neos.Fusion:Component) {
+    detailsPage = ${documentNode}
+    jobs = ${Shel.Neos.Coveto.getJobs()}
+
+    renderer = Shel.Neos.Coveto:Component.JobList.Presentation {
+        jobs = ${props.jobs}
+        detailsPage = ${props.detailsPage}
+    }
+}

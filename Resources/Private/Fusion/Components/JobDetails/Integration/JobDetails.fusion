@@ -1,0 +1,18 @@
+prototype(Shel.Neos.Coveto:Component.JobDetails) < prototype(Neos.Fusion:Component) {
+    jobId = ${request.arguments.jobid}
+    job = ${Shel.Neos.Coveto.getJob(this.jobId)}
+    job.@if.hasId = ${this.jobId}
+
+    renderer = Neos.Fusion:Case {
+        job {
+            condition = ${props.jobId}
+            renderer = Shel.Neos.Coveto:Component.JobDetails.Presentation {
+                job = ${props.job}
+            }
+        }
+        default {
+            condition = true
+            renderer = Shel.Neos.Coveto:Component.JobList
+        }
+    }
+}

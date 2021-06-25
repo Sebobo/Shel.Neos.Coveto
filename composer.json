@@ -1,0 +1,32 @@
+{
+    "name": "shel/neos-coveto",
+    "description": "coveto jobs integration for Neos CMS",
+    "type": "neos-package",
+    "authors": [
+        {
+            "name": "Sebastian Helzle",
+            "email": "me@helzle.it",
+            "role": "Developer",
+            "homepage": "https://www.helzle.it"
+        }
+    ],
+    "keywords": [
+        "neos",
+        "neoscms",
+        "coveto",
+        "jobs"
+    ],
+    "require": {
+        "neos/neos": "^5.3 || ^7.0",
+        "shel/api-connector": "^1.0",
+        "ext-simplexml": "*"
+    },
+    "suggest": {
+        "neos/seo": "This package will append joburls to the xml sitemap"
+    },
+    "autoload": {
+        "psr-4": {
+            "Shel\\Neos\\Coveto\\": "Classes"
+        }
+    }
+}

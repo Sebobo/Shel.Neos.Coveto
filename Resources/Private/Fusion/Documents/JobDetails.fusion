@@ -1,0 +1,40 @@
+prototype(Shel.Neos.Coveto:Document.JobDetails) < prototype(Neos.Neos:Page) {
+    prototype(Neos.Neos:PrimaryContent).covetoJob {
+        condition = true
+        type = 'Shel.Neos.Coveto:Component.JobDetails'
+        @position = 'before default'
+    }
+
+    prototype(Neos.Seo:CanonicalLink) {
+        attributes.href.renderer.default.renderer.arguments.jobid = ${request.arguments.jobid}
+    }
+
+    prototype(Neos.Seo:MetaDescriptionTag) {
+        attributes.content.@process.override = Neos.Fusion:Value {
+            jobId = ${request.arguments.jobid}
+            job = ${Shel.Neos.Coveto.getJob(this.jobId)}
+            job.@if.hasId = ${this.jobId}
+
+            value = ${this.job ? String.cropAtWord(this.job.text, 160) : value}
+        }
+        @if.isNotBlank = ${request.arguments.jobid || !String.isBlank(q(node).property('metaDescription'))}
+    }
+
+    @cache {
+        mode = 'dynamic'
+        entryIdentifier {
+            static = 'jobDetailsPage'
+            node = ${node}
+        }
+        context {
+            node = 'node'
+            documentNode = 'documentNode'
+            site = 'site'
+        }
+        entryTags {
+            node = ${Neos.Caching.nodeTag(node)}
+        }
+        entryDiscriminator = ${request.arguments.jobid || true}
+        maximumLifetime = 3600
+    }
+}

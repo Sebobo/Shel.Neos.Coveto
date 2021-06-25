@@ -1,0 +1,19 @@
+prototype(Shel.Neos.Coveto:Helper.JobList.UriRenderer) < prototype(Neos.Fusion:Component) {
+    detailsPage = null
+    id = ''
+    renderer = Neos.Fusion:Case {
+        node {
+            condition = ${props.detailsPage}
+            renderer = Neos.Neos:NodeUri {
+                node = ${props.detailsPage}
+                arguments.jobid = ${props.id}
+                format = 'html'
+                absolute = true
+            }
+        }
+        default {
+            condition = true
+            renderer = ${'?jobid=' + props.id}
+        }
+    }
+}

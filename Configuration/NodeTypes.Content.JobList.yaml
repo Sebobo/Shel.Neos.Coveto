@@ -1,0 +1,20 @@
+Shel.Neos.Coveto:Content.JobList:
+  superTypes:
+    Neos.Neos:Content: true
+  ui:
+    label: i18n
+    group: jobs
+    icon: list-alt
+    inspector:
+      groups:
+        jobOptions:
+          label: i18n
+          icon: briefcase
+  properties:
+    detailsPage:
+      type: reference
+      ui:
+        label: i18n
+        reloadIfChanged: true
+        inspector:
+          group: jobOptions

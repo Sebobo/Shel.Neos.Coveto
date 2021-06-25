@@ -1,0 +1,12 @@
+Shel.Neos.Coveto:Document.JobDetails:
+  superTypes:
+    Neos.Neos:Document: true
+  ui:
+    label: i18n
+    group: jobs
+    icon: briefcase
+    inspector:
+      groups:
+        jobs:
+          label: i18n
+          icon: briefcase

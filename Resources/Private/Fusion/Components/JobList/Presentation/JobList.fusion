@@ -1,0 +1,21 @@
+prototype(Shel.Neos.Coveto:Component.JobList.Presentation) < prototype(Neos.Fusion:Component) {
+    detailsPage = null
+    jobs = ${[]}
+
+    renderer = afx`
+        <section class="joblist">
+            <nav>
+                <Neos.Fusion:Loop items={props.jobs} itemName="job">
+                    <a title={job.title}>
+                        <Shel.Neos.Coveto:Helper.JobList.UriRenderer
+                            @path="attributes.href"
+                            detailsPage={props.detailsPage}
+                            id={job.id}
+                        />
+                        {job.title}
+                    </a>
+                </Neos.Fusion:Loop>
+            </nav>
+        </section>
+    `
+}

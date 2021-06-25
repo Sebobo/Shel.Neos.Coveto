@@ -1,0 +1,21 @@
+prototype(Neos.Seo:XmlSitemap.UrlList) {
+    @process.appendJobUrls = Neos.Fusion:Join {
+        value = ${value}
+
+        jobUrls = Neos.Fusion:Component {
+            jobs = ${Shel.Neos.Coveto.getJobs()}
+            detailsPage = ${q(site).find('[instanceof Shel.Neos.Coveto:Document.JobDetails]').get(0)}
+
+            @if.hasDetailsPage = ${this.detailsPage}
+
+            renderer = afx`
+                <Neos.Fusion:Loop items={props.jobs} itemName="job">
+                    <url>
+                        <loc><Shel.Neos.Coveto:Helper.JobList.UriRenderer detailsPage={props.detailsPage} id={job.id} /></loc>
+                        <lastmod>{Date.format(job.pubDate, 'c')}</lastmod>
+                    </url>
+                </Neos.Fusion:Loop>
+            `
+        }
+    }
+}
