@@ -5,19 +5,40 @@ prototype(Shel.Neos.Coveto:Document.JobDetails) < prototype(Neos.Neos:Page) {
         @position = 'before default'
     }
 
+    @context.jobid = ${request.arguments.jobid}
+    @context.job = ${request.arguments.jobid ? Shel.Neos.Coveto.getJob(request.arguments.jobid) : null}
+
     prototype(Neos.Seo:CanonicalLink) {
-        attributes.href.renderer.default.renderer.arguments.jobid = ${request.arguments.jobid}
+        attributes.href.renderer.default.renderer.arguments.jobid = ${jobid}
+    }
+
+    prototype(Neos.Seo:TitleTag) {
+        titleOverride.@process.override = ${job ? job.title : value}
     }
 
     prototype(Neos.Seo:MetaDescriptionTag) {
-        attributes.content.@process.override = Neos.Fusion:Value {
-            jobId = ${request.arguments.jobid}
-            job = ${Shel.Neos.Coveto.getJob(this.jobId)}
-            job.@if.hasId = ${this.jobId}
-
-            value = ${this.job ? String.cropAtWord(this.job.text, 160) : value}
-        }
+        attributes.content.@process.override = ${job ? String.cropAtSentence(job.text, 160) : value}
         @if.isNotBlank = ${request.arguments.jobid || !String.isBlank(q(node).property('metaDescription'))}
+    }
+
+    prototype(Neos.Seo:TwitterCard) {
+        title.@process.override = ${job ? job.title : value}
+        description.@process.override = ${job ? String.cropAtSentence(job.text, 200) : value}
+        url.@process.override = Shel.Neos.Coveto:Helper.JobList.UriRenderer {
+            detailsPage = ${documentNode}
+            id = ${jobid}
+            @if.hasJob = ${jobid}
+        }
+    }
+
+    prototype(Neos.Seo:OpenGraphMetaTags) {
+        title.@process.override = ${job ? job.title : value}
+        description.@process.override = ${job ? String.cropAtSentence(job.text, 200) : value}
+        url.@process.override = Shel.Neos.Coveto:Helper.JobList.UriRenderer {
+            detailsPage = ${documentNode}
+            id = ${jobid}
+            @if.hasJob = ${jobid}
+        }
     }
 
     @cache {
@@ -30,6 +51,7 @@ prototype(Shel.Neos.Coveto:Document.JobDetails) < prototype(Neos.Neos:Page) {
             node = 'node'
             documentNode = 'documentNode'
             site = 'site'
+            jobid = 'jobid'
         }
         entryTags {
             node = ${Neos.Caching.nodeTag(node)}
