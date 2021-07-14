@@ -5,14 +5,21 @@ prototype(Shel.Neos.Coveto:Component.JobDetails) < prototype(Neos.Fusion:Compone
 
     renderer = Neos.Fusion:Case {
         job {
-            condition = ${props.jobId}
+            condition = ${props.job}
             renderer = Shel.Neos.Coveto:Component.JobDetails.Presentation {
                 job = ${props.job}
             }
         }
         default {
             condition = true
-            renderer = Shel.Neos.Coveto:Component.JobList
+            renderer = afx`
+                <section class="jobdetails jobdetails--notfound">
+                    <p>
+                        {I18n.translate('Shel.Neos.Coveto:NodeTypes.Document.JobDetails:message.jobNotFound')}
+                    </p>
+                    <Shel.Neos.Coveto:Component.JobList />
+                </section>
+            `
         }
     }
 }

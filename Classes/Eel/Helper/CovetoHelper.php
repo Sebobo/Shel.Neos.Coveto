@@ -27,7 +27,7 @@ final class CovetoHelper implements ProtectedContextAwareInterface
     }
 
     public function getJob(string $id): ?JobDto {
-        $jobs = $this->covetoService->fetchJobs();
+        $jobs = $this->getJobs();
         foreach($jobs as $job) {
             if ($job->getId() === $id) {
                 return $job;

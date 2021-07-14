@@ -1,12 +1,14 @@
 prototype(Shel.Neos.Coveto:Document.JobDetails) < prototype(Neos.Neos:Page) {
+    @context.jobid = ${request.arguments.jobid}
+    @context.job = ${request.arguments.jobid ? Shel.Neos.Coveto.getJob(request.arguments.jobid) : null}
+
+    httpResponseHead.statusCode = ${job ? 200 : 404}
+
     prototype(Neos.Neos:PrimaryContent).covetoJob {
         condition = true
         type = 'Shel.Neos.Coveto:Component.JobDetails'
         @position = 'before default'
     }
-
-    @context.jobid = ${request.arguments.jobid}
-    @context.job = ${request.arguments.jobid ? Shel.Neos.Coveto.getJob(request.arguments.jobid) : null}
 
     prototype(Neos.Seo:CanonicalLink) {
         attributes.href.renderer.default.renderer.arguments.jobid = ${jobid}

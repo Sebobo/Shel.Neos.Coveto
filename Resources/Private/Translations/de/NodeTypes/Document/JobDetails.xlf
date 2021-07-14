@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
-    <file original="" product="Hema.HemaDe" source-language="en" datatype="plaintext">
+    <file original="" product="Hema.HemaDe" source-language="en" target-language="de" datatype="plaintext">
         <body>
             <trans-unit id="ui.label">
                 <source>Job details</source>
+                <target>Job Detailansicht</target>
             </trans-unit>
             <trans-unit id="message.jobNotFound">
                 <source>The selected job was not found. Here you can find a list of available jobs:</source>
+                <target>Die ausgewählte Stelle wurde nicht gefunden. Hier finden Sie eine Liste von verfügbaren Stellen:</target>
             </trans-unit>
         </body>
     </file>
