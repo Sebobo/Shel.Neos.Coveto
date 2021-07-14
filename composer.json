@@ -2,6 +2,7 @@
     "name": "shel/neos-coveto",
     "description": "coveto jobs integration for Neos CMS",
     "type": "neos-package",
+    "license": "GPL-3.0-or-later",
     "authors": [
         {
             "name": "Sebastian Helzle",
