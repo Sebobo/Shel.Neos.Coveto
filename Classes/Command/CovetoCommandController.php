@@ -1,0 +1,35 @@
+<?php
+
+namespace Shel\Neos\Coveto\Command;
+
+use Neos\Flow\Annotations as Flow;
+use Neos\Flow\Cli\CommandController;
+use Shel\Neos\Coveto\Domain\Dto\JobDto;
+use Shel\Neos\Coveto\Service\CovetoService;
+
+/**
+ * @Flow\Scope("singleton")
+ */
+class CovetoCommandController extends CommandController
+{
+    /**
+     * @Flow\Inject
+     * @var CovetoService
+     */
+    protected $covetoService;
+
+    public function listCommand(): void
+    {
+        $jobs = $this->covetoService->fetchJobs();
+
+        $serializedJobs = array_map(static function (JobDto $job) {
+            return [
+                'id' => $job->getId(),
+                'title' => $job->getTitle(),
+                'link' => $job->getLink(),
+            ];
+        }, $jobs);
+
+        $this->output->outputTable($serializedJobs, ['Id', 'Title', 'Link']);
+    }
+}
