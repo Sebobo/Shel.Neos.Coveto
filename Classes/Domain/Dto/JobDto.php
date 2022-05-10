@@ -9,7 +9,7 @@ use Neos\Flow\Annotations as Flow;
 /**
  * @Flow\Proxy(false)
  */
-class JobDto
+class JobDto implements \JsonSerializable
 {
     protected string $title = '';
     protected string $text = '';
@@ -27,6 +27,7 @@ class JobDto
     protected string $apply = '';
     protected ?\DateTime $pubDate = null;
     protected string $jsonld = '';
+    protected ?int $standort = null;
 
     public function getTitle(): string
     {
@@ -188,7 +189,18 @@ class JobDto
         $this->jsonld = $jsonld;
     }
 
-    public static function fromArray(array $data = []): self {
+    public function getLocationId(): ?int
+    {
+        return $this->standort;
+    }
+
+    public function setLocationId(?int $locationId): void
+    {
+        $this->standort = $locationId;
+    }
+
+    public static function fromArray(array $data = []): self
+    {
         foreach (get_object_vars($obj = new self) as $property => $default) {
             if (!array_key_exists($property, $data)) {
                 continue;
@@ -199,11 +211,18 @@ class JobDto
                 $value = JobContactDto::fromArray((array)$value);
             } elseif ($property === 'pubDate') {
                 $value = new \DateTime($value);
+            } elseif ($property === 'standort') {
+                $value = (int)$value;
             } else {
                 $value = (string)$value;
             }
             $obj->{$property} = $value;
         }
         return $obj;
+    }
+
+    public function jsonSerialize()
+    {
+        return get_object_vars($this);
     }
 }

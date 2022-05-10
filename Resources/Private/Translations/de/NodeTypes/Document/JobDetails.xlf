@@ -6,9 +6,17 @@
                 <source>Job details</source>
                 <target>Job Detailansicht</target>
             </trans-unit>
+            <trans-unit id="groups.jobs">
+                <source>Jobs settings</source>
+                <target>Einstellungen für Jobs</target>
+            </trans-unit>
             <trans-unit id="message.jobNotFound">
                 <source>The selected job was not found. Here you can find a list of available jobs:</source>
                 <target>Die ausgewählte Stelle wurde nicht gefunden. Hier finden Sie eine Liste von verfügbaren Stellen:</target>
+            </trans-unit>
+            <trans-unit id="properties.locationId">
+                <source>Only show jobs for the following location id</source>
+                <target>Nur Stellenanzeigen für folgende Standort-ID anzeigen</target>
             </trans-unit>
         </body>
     </file>

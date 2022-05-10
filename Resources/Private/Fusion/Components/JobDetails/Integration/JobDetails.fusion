@@ -1,5 +1,6 @@
 prototype(Shel.Neos.Coveto:Component.JobDetails) < prototype(Neos.Fusion:Component) {
     jobId = ${request.arguments.jobid}
+    locationId = ${q(documentNode).property('locationId')}
     job = ${Shel.Neos.Coveto.getJob(this.jobId)}
     job.@if.hasId = ${this.jobId}
 
@@ -17,7 +18,7 @@ prototype(Shel.Neos.Coveto:Component.JobDetails) < prototype(Neos.Fusion:Compone
                     <p>
                         {I18n.translate('Shel.Neos.Coveto:NodeTypes.Document.JobDetails:message.jobNotFound')}
                     </p>
-                    <Shel.Neos.Coveto:Component.JobList />
+                    <Shel.Neos.Coveto:Component.JobList locationId={props.locationId} />
                 </section>
             `
         }

@@ -26,10 +26,11 @@ class CovetoCommandController extends CommandController
             return [
                 'id' => $job->getId(),
                 'title' => $job->getTitle(),
+                'locationId' => $job->getLocationId(),
                 'link' => $job->getLink(),
             ];
         }, $jobs);
 
-        $this->output->outputTable($serializedJobs, ['Id', 'Title', 'Link']);
+        $this->output->outputTable($serializedJobs, ['Id', 'Title', 'Location ID', 'Link']);
     }
 }

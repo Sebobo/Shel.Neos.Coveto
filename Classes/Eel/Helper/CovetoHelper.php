@@ -22,8 +22,12 @@ final class CovetoHelper implements ProtectedContextAwareInterface
     /**
      * @return array<JobDto>
      */
-    public function getJobs(): array {
-        return $this->covetoService->fetchJobs();
+    public function getJobs(int $locationId = null): array {
+        $jobs = $this->covetoService->fetchJobs();
+        if ($locationId) {
+            return array_filter($jobs, static fn (JobDto $job) => $job->getLocationId() === $locationId);
+        }
+        return $jobs;
     }
 
     public function getJob(string $id): ?JobDto {

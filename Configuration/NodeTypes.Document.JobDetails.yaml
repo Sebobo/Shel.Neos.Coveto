@@ -10,3 +10,12 @@ Shel.Neos.Coveto:Document.JobDetails:
         jobs:
           label: i18n
           icon: briefcase
+  properties:
+    locationId:
+      type: integer
+      ui:
+        label: i18n
+        reloadIfChanged: true
+        inspector:
+          group: jobs
+
