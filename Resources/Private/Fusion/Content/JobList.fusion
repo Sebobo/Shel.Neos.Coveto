@@ -1,8 +1,10 @@
 prototype(Shel.Neos.Coveto:Content.JobList) < prototype(Neos.Neos:ContentComponent) {
     detailsPage = ${q(node).property('detailsPage')}
+    locationId = ${q(node).property('locationId')}
 
     renderer = Shel.Neos.Coveto:Component.JobList {
         detailsPage = ${props.detailsPage}
+        locationId = ${props.locationId}
     }
 
     @cache {

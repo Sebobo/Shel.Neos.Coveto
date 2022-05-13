@@ -5,7 +5,7 @@
             <trans-unit id="ui.label">
                 <source>Joblist</source>
             </trans-unit>
-            <trans-unit id="groups.jobOptions">
+            <trans-unit id="groups.jobs">
                 <source>Options</source>
             </trans-unit>
             <trans-unit id="properties.detailsPage">

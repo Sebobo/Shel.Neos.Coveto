@@ -1,13 +1,14 @@
 Shel.Neos.Coveto:Content.JobList:
   superTypes:
     Neos.Neos:Content: true
+    Shel.Neos.Coveto:Mixin.LocationId: true
   ui:
     label: i18n
     group: jobs
     icon: list-alt
     inspector:
       groups:
-        jobOptions:
+        jobs:
           label: i18n
           icon: briefcase
   properties:
@@ -17,4 +18,4 @@ Shel.Neos.Coveto:Content.JobList:
         label: i18n
         reloadIfChanged: true
         inspector:
-          group: jobOptions
+          group: jobs

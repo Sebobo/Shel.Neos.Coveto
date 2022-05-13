@@ -1,6 +1,7 @@
 Shel.Neos.Coveto:Document.JobDetails:
   superTypes:
     Neos.Neos:Document: true
+    Shel.Neos.Coveto:Mixin.LocationId: true
   ui:
     label: i18n
     group: jobs
@@ -10,12 +11,4 @@ Shel.Neos.Coveto:Document.JobDetails:
         jobs:
           label: i18n
           icon: briefcase
-  properties:
-    locationId:
-      type: integer
-      ui:
-        label: i18n
-        reloadIfChanged: true
-        inspector:
-          group: jobs
 

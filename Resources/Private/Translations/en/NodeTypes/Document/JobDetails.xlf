@@ -11,9 +11,6 @@
             <trans-unit id="message.jobNotFound">
                 <source>The selected job was not found. Here you can find a list of available jobs:</source>
             </trans-unit>
-            <trans-unit id="properties.locationId">
-                <source>Only show jobs for the following location id</source>
-            </trans-unit>
         </body>
     </file>
 </xliff>

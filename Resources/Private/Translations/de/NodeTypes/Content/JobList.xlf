@@ -6,7 +6,7 @@
                 <source>Joblist</source>
                 <target>Stellenliste</target>
             </trans-unit>
-            <trans-unit id="groups.jobOptions">
+            <trans-unit id="groups.jobs">
                 <source>Options</source>
                 <target>Optionen</target>
             </trans-unit>

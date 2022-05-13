@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file original="" product="Hema.HemaDe" source-language="en" target-language="de" datatype="plaintext">
+        <body>
+            <trans-unit id="properties.locationId">
+                <source>Only show jobs for the following location id</source>
+                <target>Nur Stellenanzeigen für folgende Standort-ID anzeigen</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>
