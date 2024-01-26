@@ -20,15 +20,13 @@ class CovetoService extends AbstractApiConnector
      */
     public function fetchJobs(): array
     {
-        $requestUri = $this->buildRequestUri('fetchJobs');
-        $response = $this->fetchDataInternal((string)$requestUri);
-
-        if ($response === false) {
-            $this->logger->error('Could not fetch jobs', [$requestUri]);
+        try {
+            $xmlData = $this->fetchData('fetchJobs');
+        } catch (\Exception $e) {
+            $this->logger->error('Could not fetch jobs', [$e->getMessage()]);
             return [];
         }
 
-        $xmlData = $response->getBody()->getContents();
         $data = \simplexml_load_string($xmlData);
 
         if ($data === false) {
@@ -36,7 +34,6 @@ class CovetoService extends AbstractApiConnector
             return [];
         }
 
-        $jobs = [];
         foreach ($data as $jobXml) {
             $jobs[]= JobDto::fromArray((array)$jobXml);
         }
