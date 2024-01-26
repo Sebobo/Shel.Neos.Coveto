@@ -22,6 +22,11 @@ class CovetoCommandController extends CommandController
     {
         $jobs = $this->covetoService->fetchJobs();
 
+        if (!$jobs) {
+            $this->outputLine('No jobs found');
+            return;
+        }
+
         $serializedJobs = array_map(static function (JobDto $job) {
             return [
                 'id' => $job->getId(),
