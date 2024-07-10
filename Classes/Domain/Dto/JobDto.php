@@ -207,14 +207,16 @@ class JobDto implements \JsonSerializable
             }
             // Handle contact array separately
             $value = $data[$property];
+            if ($value instanceof \SimpleXMLElement) {
+                $value = (string)$value;
+            }
+
             if ($property === 'contact') {
                 $value = JobContactDto::fromArray((array)$value);
             } elseif ($property === 'pubDate') {
                 $value = new \DateTime($value);
             } elseif ($property === 'standort') {
                 $value = (int)$value;
-            } else {
-                $value = (string)$value;
             }
             $obj->{$property} = $value;
         }

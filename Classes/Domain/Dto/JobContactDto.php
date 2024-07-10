@@ -139,7 +139,11 @@ class JobContactDto
             if (!array_key_exists($property, $data)) {
                 continue;
             }
-            $obj->{$property} = $data[$property];
+            $value = $data[$property];
+            if ($value instanceof \SimpleXMLElement) {
+                $value = (string)$value;
+            }
+            $obj->{$property} = $value;
         }
         return $obj;
     }
