@@ -8,4 +8,6 @@
   routeParts:
     node:
       handler: Neos\Neos\Routing\FrontendNodeRoutePartHandlerInterface
+      options:
+        nodeType: 'Shel.Neos.Coveto:Document.JobDetails'
   appendExceedingArguments: true
